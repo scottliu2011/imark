@@ -1,0 +1,143 @@
+.imark-highlight {
+  background: #DEA168;
+  color: white;
+  border-radius: 3px;
+  padding-left: 2px;
+  padding-right: 2px;
+}
+
+/* content script will be running in the current web page,
+  it's important to avoid some style conflicts with the web page,
+  and so, use all unique IDs here.
+*/
+
+/*#imark-edit-window {
+  all: initial;
+}
+
+#imark-edit-window * {
+  all: unset;
+}*/
+
+#imark-edit-window,
+#imark-edit-window  * {
+  box-sizing: border-box;
+}
+
+#imark-edit-window {
+  width: 400px;
+  height: 200px;
+  display: none;
+}
+
+#imark-edit-window.imark-open {
+  display: block;
+
+  position: fixed;
+  box-shadow: 0 0 3px #ccc;
+  z-index: 10000;
+}
+
+#imark-edit-window-header {
+  width: 100%;
+  height: 28px;
+  background-color: #26a69a;
+  color: white;
+  cursor: move;
+
+  display: flex;
+
+  -webkit-user-select: none;
+  user-select: none;
+}
+
+#imark-edit-window-title {
+  line-height: 28px;
+  padding-left: 5px;
+  flex-grow: 1;
+}
+
+#imark-edit-window-close {
+  font-size: 20px;
+  width: 28px;
+  height: 28px;
+  line-height: 26px;
+  text-align: center;
+  cursor: pointer;
+}
+
+#imark-edit-window-close:hover {
+  background-color: #004d40;
+}
+
+#imark-edit-window-body {
+  padding: 0 1px;
+  height: 140px;
+  background-color: #ccc;
+
+  display: flex;
+  flex-direction: column;
+}
+
+#imark-edit-window-mark,
+#imark-edit-window-note {
+  width: 100%;
+  padding: 5px;
+  font-size: 14px;
+
+  outline: none;
+  border: none;
+  resize: none;
+
+  background-color: white;
+
+  flex-grow: 2;
+}
+
+#imark-edit-window-note {
+  margin-top: 1px;
+  flex-grow: 3;
+}
+
+#imark-edit-window-footer {
+  width: 100%;
+  height: 32px;
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+
+  display: flex;
+}
+#imark-edit-window-done,
+#imark-edit-window-discard,
+#imark-edit-window-status {
+  display: inline-block;
+  margin-left: 5px;
+  width: 50px;
+  height: 22px;
+  line-height: 22px;
+  text-align: center;
+  font-size: 14px;
+
+  align-self: center;
+}
+#imark-edit-window-done {
+  background-color: #26a69a;
+  border: 1px solid #26a69a;
+  border-radius: 2px;
+
+  color: white;
+  cursor: pointer;
+}
+#imark-edit-window-done:hover {
+  background-color: #00bfa5;
+  border: 1px solid #00bfa5;
+}
+#imark-edit-window-discard {
+  text-decoration: underline;
+  cursor: pointer;
+  padding-top: 1px;
+}
+#imark-edit-window-status {
+  color: #c05b4d;
+  padding-top: 1px;
+}

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8"/>
+		<link rel="stylesheet" type="text/css" href="css/popup.css"/>
+	</head>
+	<body ng-app="popupApp" ng-controller="PopupController" ng-class="{exporting: exporting}">
+		<section id="export-section" ng-show="exporting">
+			<p class="export-item" ng-repeat="mark in markList">
+				<span ng-if="mark.markText"><b>Mark: </b>{{mark.markText}}</span>
+				<span ng-if="mark.noteText"><b>Note: </b>{{mark.noteText}}</span>
+				<br/>
+			</p>
+		</section>
+		<section id="display-section">
+			<header>
+				<input type="input" ng-model="searchText" placeholder="type in keywords to search"/>
+			</header>
+			<ul class="imark-items">
+				<li class="imark-item" ng-repeat="mark in markList | filter: searchText"
+						ng-mouseover="onMouseOver(mark)"
+						ng-mouseleave="onMouseLeave(mark)">
+					<section class=imark-item-wrapper>
+						<article ng-if="mark.markText"><b>Mark: </b><span ng-bind-html="highlight(mark.markText)"></span></article>
+						<article ng-if="mark.noteText"><b>Note: </b><span ng-bind-html="highlight(mark.noteText)"></span></article>
+						<span class="imark-remove" ng-show="mark.hovering" ng-click="remove(mark)">Remove</span>
+					</section>
+				</li>
+			</ul>
+			<footer>
+				<div ng-click="toggleExport()" class="imark-export" ng-hide="exporting">Export</div>
+				<div ng-click="toggleExport()" class="imark-export" ng-show="exporting">Close</div>
+			</footer>
+		</section>
+		<script type="text/javascript" src="js/angular.min.js"></script>
+		<script type="text/javascript" src="js/angular-sanitize.min.js"></script>
+		<script type="text/javascript" src="js/storage.js"></script>
+		<script type="text/javascript" src="js/popup.js"></script>
+	</body>
+</html>
